@@ -3,5 +3,5 @@ name=mipad-custom-boot
 version=v1.0.0
 versionCode=1
 author=Veutexus
-description=Custom boot animation for tablet devices. (https://github.com/G0246/liuqin_boot_animation)
+description=Custom boot animation for tablet devices. (https://github.com/G0246/mipad-custom-boot)
 updateJson=https://raw.githubusercontent.com/G0246/mipad-custom-boot/refs/heads/main/update.json
