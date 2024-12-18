@@ -4,12 +4,12 @@ A Magisk module that is exclusive made for tablet devices and modifies the boot 
 ## Requirements
 - Magisk v26.1+
 - Android 11+ (API 30+) - May also work with other APIs
-- Check if you have multiple bootanimation#.zip in /system/media/ or /system/product/media/
+- Check if you have multiple bootanimation[#].zip in /system/media/ or /system/product/media/
 
 ## Installation
-1. Flash the .zip in the Magisk app
-2. You can also change the animation timing or design to your liking, mine is just a template.
+1. Download the latest release
+2. Flash the .zip in the Magisk app
+3. You can also change the animation timing or design to your liking, mine is just a template.
 
 ## Disclaimer
-**Flashing this module may cause your device to bootloop, a bootloop saver module is highly recommended.**
-**I am not responsible for any damages caused to your device or data by using this module. Use at your own risk.**
+**Flashing this module may cause your device to bootloop, a bootloop saver module is highly recommended. I am not responsible for any damages caused to your device or data by using this module. Use at your own risk.**
