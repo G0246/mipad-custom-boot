@@ -1,15 +1,13 @@
 #!/system/bin/sh
-
 MODDIR=${0%/*}
 
-# Check if the boot animation path exists
-if [ -f /system/media/bootanimation.zip ]; then
-    BootAnimPath=$MODDIR/system/media
+# Check if path exists
+if [ -f "$MODDIR/bootpath.txt" ]; then
+    BootAnimPath=$(dirname "$(cat "$MODDIR/bootpath.txt")")
 else
     exit 1
 fi
 
-# Change to the boot animation path
 cd "$BootAnimPath" || exit 1
 
 boot_animations=(
@@ -20,7 +18,6 @@ boot_animations=(
     "bootanimation04.zip"
 )
 
-# Copy files
 for file in "${boot_animations[@]}"; do
     if [ -f "$file" ]; then
         cp -p -R "$file" "$file"
