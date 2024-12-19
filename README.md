@@ -7,8 +7,8 @@ A Magisk module that is exclusive made for tablet devices and modifies the boot 
 ## Requirements
 - Magisk v26.1+
 - Android 11+ (API 30+) - May also work with other APIs
-- > [!NOTE]
-- > Check if you have multiple bootanimation[#].zip in /system/media/ or /system/product/media/
+> [!NOTE]
+> Check if you have multiple bootanimation[#].zip in /system/media/ or /system/product/media/
 
 ## Installation
 1. Download the latest release
