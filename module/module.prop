@@ -4,4 +4,4 @@ version=v0.5.0 (5)
 versionCode=5
 author=Veutexus
 description=Custom boot animation for tablet devices. (Github: https://github.com/G0246/mipad-custom-boot)
-updateJson=https://raw.githubusercontent.com/G0246/mipad-custom-boot/refs/heads/main/update.json
+updateJson=https://raw.githubusercontent.com/G0246/mipad-custom-boot/main/update.json
