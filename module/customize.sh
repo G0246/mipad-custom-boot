@@ -20,11 +20,12 @@ if [ "$API" -lt 30 ]; then
     abort "! You can't use this module on Android < 11.0"
 fi
 
+# Function unfinished
 ui_print "- Checking boot animation path for better compatibility"
 if [ -f "/system/product/media/bootanimation.zip" ]; then
-    bootpath =/system/product/media/
+    bootpath=/system/product/media/
 elif [ -f "/system/media/bootanimation.zip" ]; then
-    bootpath =/system/media/
+    bootpath=/system/media/
 elif [ -f "/vendor/media/bootanimation.zip" ]; then
     abort "! Device not supported yet"
 elif [ -f "/product/media/bootanimation.zip" ]; then
