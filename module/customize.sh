@@ -27,11 +27,9 @@ if [ -f "/system/product/media/bootanimation.zip" ]; then
     # BOOTPATH="/system/product/media"
     abort "! Device unsupported yet."
 elif [ -f "/system/media/bootanimation.zip" ]; then
-    # BOOTPATH="/system/media"
-    abort "! Device unsupported yet."
+    BOOTPATH="/system/media"
 elif [ -f "/vendor/media/bootanimation.zip" ]; then
-    # BOOTPATH="/vendor/media"
-    abort "! Device unsupported yet."
+    BOOTPATH="/vendor/media"
 else
     abort "! Boot animation not found. Device unsupported."
 fi
