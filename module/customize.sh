@@ -1,49 +1,61 @@
 #!/system/bin/sh
 
-# Recovery not recommended
 if [ "$BOOTMODE" != true ]; then
-    abort "! Installing from recovery is not supported, please install via Magisk app only"
+    abort "! Installing from recovery is not supported. Use the Magisk app."
 fi
 
-# Check Magisk version
 if [ "$MAGISK_VER_CODE" -lt 26100 ]; then
     abort "! Magisk version must be 26.1 or higher. Current version: $MAGISK_VER_CODE"
 fi
 
-# Display device information
 ui_print "- Device information:"
 ui_print "- Brand: $(getprop ro.product.brand)"
 ui_print "- Model: $(getprop ro.product.model)"
 ui_print "- Android: $(getprop ro.build.version.release)"
 ui_print "- Magisk: $MAGISK_VER"
 
-# Error on < Android 11
 if [ "$API" -lt 30 ]; then
-    abort "! You can't use this module on Android < 11.0"
+    abort "! Android 11 or higher is required."
 fi
 
-# Check boot animation path for better compatibility
-ui_print "- Checking boot animation path for better compatibility"
+ui_print "- Checking boot animation path..."
 if [ -f "/system/product/media/bootanimation.zip" ]; then
-    bootpath="/system/product/media/"
+    # BOOTPATH="/system/product/media"
+    abort "! Device unsupported yet."
 elif [ -f "/system/media/bootanimation.zip" ]; then
-    bootpath="/system/media/"
+    # BOOTPATH="/system/media"
+    abort "! Device unsupported yet."
 elif [ -f "/vendor/media/bootanimation.zip" ]; then
-    abort "! Device not supported yet"
-elif [ -f "/product/media/bootanimation.zip" ]; then
-    abort "! Device not supported yet"
-elif [ -f "/my_product/media/bootanimation/bootanimation.zip" ]; then
-    abort "! Device not supported yet"
-elif [ -f "/oppo_product/media/bootanimation/bootanimation.zip" ]; then
-    abort "! Device not supported yet"
+    # BOOTPATH="/vendor/media"
+    abort "! Device unsupported yet."
 else
-    abort "! Unable to find bootanimation.zip or device not supported"
+    abort "! Boot animation not found. Device unsupported."
 fi
 
-ui_print "- Found boot animation at $bootpath"
-echo "$bootpath" > "$MODPATH/bootpath.txt"
-sleep 1
+ui_print "- Boot animation found at $BOOTPATH"
+
+# Backup
+ui_print "- Backing up existing boot animations..."
+BACKUP_DIR="$MODPATH/original"
+mkdir -p "$BACKUP_DIR"
+for file in bootanimation.zip bootanimation01.zip bootanimation02.zip bootanimation03.zip bootanimation04.zip; do
+    if [ -f "$BOOTPATH/$file" ]; then
+        cp -f "$BOOTPATH/$file" "$BACKUP_DIR/"
+        ui_print "  - Backed up $file"
+    fi
+done
+
+# Replace
+ui_print "- Replacing boot animations with new files..."
+SOURCE_DIR="$MODPATH/system/media"
+for file in "$SOURCE_DIR"/*.zip; do
+    if [ -f "$file" ]; then
+        mount -o rw,remount "$(dirname "$BOOTPATH")"
+        cp -f "$file" "$BOOTPATH/"
+        ui_print "  - Replaced $(basename "$file")"
+    fi
+done
 
 ui_print ""
-ui_print "- Module installation completed, restart to take effect"
+ui_print "- Module installation complete. Reboot to apply changes."
 ui_print "- By Veutexus (github.com/G0246)"
