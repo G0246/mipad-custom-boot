@@ -1,19 +1,23 @@
 #!/system/bin/sh
 
+# Recovery not supported
 if [ "$BOOTMODE" != true ]; then
     abort "! Installing from recovery is not supported. Use the Magisk app."
 fi
 
+# Check Magisk version
 if [ "$MAGISK_VER_CODE" -lt 26100 ]; then
     abort "! Magisk version must be 26.1 or higher. Current version: $MAGISK_VER_CODE"
 fi
 
+# Device infos
 ui_print "- Device information:"
 ui_print "- Brand: $(getprop ro.product.brand)"
 ui_print "- Model: $(getprop ro.product.model)"
 ui_print "- Android: $(getprop ro.build.version.release)"
 ui_print "- Magisk: $MAGISK_VER"
 
+# Error on < Android 11
 if [ "$API" -lt 30 ]; then
     abort "! Android 11 or higher is required."
 fi
