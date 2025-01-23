@@ -37,6 +37,9 @@ ui_print "- Boot animation found at $BOOTPATH"
 
 BACKUP_DIR="/sdcard/Download/Bootanimation_backups"
 SOURCE_DIR="$MODPATH/system/media"
+BOOTPATH_FILE="$MODDIR/bootpath.txt"
+
+echo "$BOOTPATH" > "$BOOTPATH_FILE"
 
 if [ ! -d "$BACKUP_DIR" ]; then
     mkdir -p "$BACKUP_DIR"
