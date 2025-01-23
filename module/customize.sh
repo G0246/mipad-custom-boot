@@ -24,8 +24,7 @@ fi
 
 ui_print "- Checking boot animation path..."
 if [ -f "/system/product/media/bootanimation.zip" ]; then
-    # BOOTPATH="/system/product/media"
-    abort "! Device unsupported yet."
+    BOOTPATH="/system/product/media"
 elif [ -f "/system/media/bootanimation.zip" ]; then
     BOOTPATH="/system/media"
 elif [ -f "/vendor/media/bootanimation.zip" ]; then
@@ -36,25 +35,30 @@ fi
 
 ui_print "- Boot animation found at $BOOTPATH"
 
+BACKUP_DIR="/sdcard/Download/Bootanimation_backups"
+SOURCE_DIR="$MODPATH/system/media"
+
+if [ ! -d "$BACKUP_DIR" ]; then
+    mkdir -p "$BACKUP_DIR"
+fi
+
 # Backup
 ui_print "- Backing up existing boot animations..."
-BACKUP_DIR="$MODPATH/original"
 mkdir -p "$BACKUP_DIR"
 for file in bootanimation.zip bootanimation01.zip bootanimation02.zip bootanimation03.zip bootanimation04.zip; do
     if [ -f "$BOOTPATH/$file" ]; then
         cp -f "$BOOTPATH/$file" "$BACKUP_DIR/"
-        ui_print "  - Backed up $file"
+        ui_print "- Backed up $file"
     fi
 done
 
 # Replace
 ui_print "- Replacing boot animations with new files..."
-SOURCE_DIR="$MODPATH/system/media"
 for file in "$SOURCE_DIR"/*.zip; do
     if [ -f "$file" ]; then
         mount -o rw,remount "$(dirname "$BOOTPATH")"
         cp -f "$file" "$BOOTPATH/"
-        ui_print "  - Replaced $(basename "$file")"
+        ui_print "- Replaced $(basename "$file")"
     fi
 done
 
