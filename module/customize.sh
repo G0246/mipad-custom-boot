@@ -23,10 +23,10 @@ if [ "$API" -lt 30 ]; then
 fi
 
 ui_print "- Checking boot animation path..."
-if [ -f "/system/product/media/bootanimation.zip" ]; then
-    BOOTPATH="/system/product/media"
-elif [ -f "/system/media/bootanimation.zip" ]; then
+if [ -f "/system/media/bootanimation.zip" ]; then
     BOOTPATH="/system/media"
+elif [ -f "/system/product/media/bootanimation.zip" ]; then
+    BOOTPATH="/system/product/media"
 elif [ -f "/vendor/media/bootanimation.zip" ]; then
     BOOTPATH="/vendor/media"
 else
@@ -34,13 +34,9 @@ else
 fi
 
 ui_print "- Boot animation found at $BOOTPATH"
+echo "$BOOTPATH" > "$MODDIR/bootpath.txt"
 
 BACKUP_DIR="/sdcard/Download/Bootanimation_backups"
-SOURCE_DIR="$MODPATH/system/media"
-BOOTPATH_FILE="$MODDIR/bootpath.txt"
-
-echo "$BOOTPATH" > "$BOOTPATH_FILE"
-
 if [ ! -d "$BACKUP_DIR" ]; then
     mkdir -p "$BACKUP_DIR"
 fi
@@ -56,6 +52,7 @@ for file in bootanimation.zip bootanimation01.zip bootanimation02.zip bootanimat
 done
 
 # Replace
+SOURCE_DIR="$MODPATH/system/media"
 ui_print "- Replacing boot animations with new files..."
 for file in "$SOURCE_DIR"/*.zip; do
     if [ -f "$file" ]; then
