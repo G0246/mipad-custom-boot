@@ -1,6 +1,6 @@
 {
-    "version": "v0.5.0-alpha",
-    "versionCode": 5,
-    "zipUrl": "https://github.com/G0246/mipad-custom-boot/releases/latest/download",
+    "version": "v1.0.0",
+    "versionCode": 10,
+    "zipUrl": "https://github.com/G0246/mipad-custom-boot/releases/latest/download/mi-pad-custom-boot-1.0.0.zip",
     "changelog": "https://raw.githubusercontent.com/G0246/mipad-custom-boot/main/README.md"
 }
