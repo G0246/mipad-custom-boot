@@ -55,8 +55,8 @@ ui_print "*********************************************"
 
 # Check root manager
 if [[ "$KSU" == "true" ]]; then
-  ui_print "- KernelSU userspace version: $KSU_VER_CODE"
-  ui_print "- KernelSU kernel space version: $KSU_KERNEL_VER_CODE"
+  ui_print "- KernelSU Userspace Version: $KSU_VER_CODE"
+  ui_print "- KernelSU Kernel Space Version: $KSU_KERNEL_VER_CODE"
   if [ "$KSU_VER_CODE" -lt 11551 ]; then
     ui_print "*********************************************"
     ui_print "- Error: KernelSU v0.8.0+ required!"
@@ -65,15 +65,15 @@ if [[ "$KSU" == "true" ]]; then
 elif [[ "$APATCH" == "true" ]]; then
   ui_print "- APatch Version Code: $APATCH_VER_CODE"
   ui_print "- APatch Version: $APATCH_VER"
-  ui_print "- KernelPatch userspace version: $KERNELPATCH_VERSION"
-  ui_print "- KernelPatch kernel space version: $KERNEL_VERSION"
+  ui_print "- KernelPatch Userspace Version: $KERNELPATCH_VERSION"
+  ui_print "- KernelPatch Kernel Space Version: $KERNEL_VERSION"
   if [ "$APATCH_VER_CODE" -lt 10568 ]; then
     ui_print "*********************************************"
     ui_print "- Error: APatch 10568+ required!"
     abort "*********************************************"
   fi
 else
-  ui_print "- Magisk version: $MAGISK_VER ($MAGISK_VER_CODE)"
+  ui_print "- Magisk Version: $MAGISK_VER ($MAGISK_VER_CODE)"
   if [ "$MAGISK_VER_CODE" -lt 26000 ]; then
     ui_print "*********************************************"
     ui_print "! Error: Magisk v26.0+ required!"
@@ -90,7 +90,7 @@ fi
 
 # Device infos
 ui_print "*********************************************"
-ui_print "- Device information:"
+ui_print "- Device Information:"
 ui_print "  Brand: $(getprop ro.product.brand)"
 ui_print "  Model: $(getprop ro.product.model)"
 ui_print "  Android: $(getprop ro.build.version.release)"
