@@ -1,0 +1,5 @@
+*.tmp
+*.log
+*.so
+test*
+b.sh
