@@ -11,7 +11,7 @@
 > 检查 /system/media/ 或 /product/media/ 中是否有多个 bootanimation*.zip
 
 ## 安装
-1. 下载 [最新](https://github.com/G0246/mipad-custom-boot/releases/latest) 版本
+1. 下载[最新](https://github.com/G0246/mipad-custom-boot/releases/latest)版本
 2. 根据自己的喜好更改动画时间或设计（可选）
 3. Magisk 应用中刷入 .zip 模块
 > [!TIP]
