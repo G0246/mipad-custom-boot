@@ -8,8 +8,6 @@ MAGISK_PATH=/data/adb/modules/
 MODULE_ID=$(grep_prop id "$MODPATH/module.prop")
 MODULE_VER_CODE=$(expr "$(grep_prop versionCode "$MODPATH/module.prop")" + 0)
 
-/bin/chmod -R 777 "$MODPATH"
-
 key_check() {
   while true; do
     key_check=$(/system/bin/getevent -qlc 1)
@@ -38,7 +36,7 @@ backup() {
         cp -f "$file" "$BACKUP_DIR/" && {
           ui_print "- Cloned $(basename "$file")"
         } || {
-          ui_print "! Unable to clone $(basename "$file")"
+          ui_print "! Error: Unable to clone $(basename "$file")"
           abort "*********************************************"
         }
       fi
@@ -107,7 +105,7 @@ if [ ! -d "$MAGISK_PATH$MODULE_ID/backups" ]; then
   key_check
   if [ "$keycheck" == "KEY_VOLUMEUP" ]; then
     mkdir -p "$BACKUP_DIR" && ui_print "- Created $BACKUP_DIR" || {
-      ui_print "! Unable to create $BACKUP_DIR"
+      ui_print "! Error: Unable to create $BACKUP_DIR"
       abort "*********************************************"
     }
     backup
