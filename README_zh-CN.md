@@ -2,7 +2,7 @@
 [English](/README.md) | 简体中文
 
 ## 描述
-专为平板设备打造的 Magisk/KSU/APatch 模块，可修改开机动画。平板与其他设备略有不同，其动画会根据设备的方向而更改。目前仅在小米 Pad 6 Pro (liuqin) V14.0.9.0.TMYCNXM 上进行了测试，但其他型号也应该可以使用。
+专为平板设备打造的 Magisk 模块，可修改开机动画。平板与其他设备略有不同，其动画会根据设备的方向而更改。目前仅在小米 Pad 6 Pro (liuqin) V14.0.9.0.TMYCNXM 上进行了测试，但其他型号也应该可以使用。
 
 ## 要求
 - Magisk v26.1+ / KernelSU v0.8.0+ / APatch 10568+

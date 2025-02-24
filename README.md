@@ -2,7 +2,7 @@
 English | [简体中文](/README_zh-CN.md)
 
 ## Description
-A Magisk/KSU/APatch module that is exclusive made for tablet devices and modifies the boot animation. Tablets differ slightly from other devices in that their animations vary depending on the orientation of the device. It has only been tested on the Xiaomi Pad 6 Pro (liuqin) V14.0.9.0.TMYCNXM at the moment, but it should work on other models as well.
+A Magisk module that is exclusive made for tablet devices and modifies the boot animation. Tablets differ slightly from other devices in that their animations vary depending on the orientation of the device. It has only been tested on the Xiaomi Pad 6 Pro (liuqin) V14.0.9.0.TMYCNXM at the moment, but it should work on other models as well.
 
 ## Requirements
 - Magisk v26.1+ / KernelSU v0.8.0+ / APatch 10568+
@@ -15,7 +15,7 @@ A Magisk/KSU/APatch module that is exclusive made for tablet devices and modifie
 2. Change the animation timing or design to your liking (Optional)
 3. Flash .zip module in the Magisk/KSU/APatch app
 > [!TIP]
-> If you saw a blank screen after adding your own animation, that means you didn't compress it correctly, the ZIP should be uncompressed (store-only mode).
+> If you see a blank screen after adding your own animation, that means you didn't compress it correctly, the ZIP should be uncompressed (store-only mode).
 
 ## Disclaimer
 **Flashing this module may cause your device to bootloop, a bootloop saver module is highly recommended. I am not responsible for any damages caused to your device or data by using this module. Use at your own risk.**
