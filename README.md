@@ -8,15 +8,13 @@ A Magisk module that is exclusive made for tablet devices and modifies the boot 
 - Magisk v26.1+
 - Android 11+ (API 30+) - May also work with other APIs
 > [!NOTE]
-> Check if you have multiple bootanimation[#].zip in /system/media/ or /product/media/
+> Check if you have multiple bootanimation*.zip in /system/media/ or /product/media/
 
 ## Installation
 1. Download the [latest](https://github.com/G0246/mipad-custom-boot/releases/latest) release
-2. Customize your own theme (Optional)
+2. Change the animation timing or design to your liking (Optional)
 3. Flash .zip module in the Magisk app
 > [!TIP]
-> You can also change the animation timing or design to your liking, or just use my templates.
->
 > If you saw a blank screen after adding your own theme, then you didn't compress it correctly, the ZIP should be uncompressed (store-only mode).
 
 ## Disclaimer
