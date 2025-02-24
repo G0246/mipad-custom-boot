@@ -1,7 +1,7 @@
 id=mipad-custom-boot
 name=mipad-custom-boot
-version=v1.0.0
-versionCode=10
+version=v1.0.5
+versionCode=15
 author=Veutexus
 description=A module that can custom boot animation for tablet devices. (GitHub: https://github.com/G0246/mipad-custom-boot)
 updateJson=https://raw.githubusercontent.com/G0246/mipad-custom-boot/main/update.json

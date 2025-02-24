@@ -1,5 +1,14 @@
 #!/system/bin/sh
 SKIPUNZIP=0
+api_level_arch_detect
+
+BOOTPATH="/product/media"
+BACKUP_DIR="$MODPATH/backups"
+MAGISK_PATH=/data/adb/modules/
+MODULE_ID=$(grep_prop id "$MODPATH/module.prop")
+MODULE_VER_CODE=$(expr "$(grep_prop versionCode "$MODPATH/module.prop")" + 0)
+
+/bin/chmod -R 777 "$MODPATH"
 
 key_check() {
   while true; do
@@ -21,49 +30,7 @@ key_check() {
   done
 }
 
-ui_print "*********************************************"
-ui_print "- mi-pad-custom-boot"
-ui_print "- By Veutexus (github.com/G0246)"
-ui_print "*********************************************"
-
-# Check Magisk version
-if [ "$MAGISK_VER_CODE" -lt 26100 ]; then
-  abort "! Error: Magisk v26.1+ required!"
-fi
-
-# Check Android version
-if [[ "$API" -lt 30 ]]; then
-  abort "! Error: Android 11+ required!"
-fi
-
-# Device infos
-ui_print "- Device Information:"
-ui_print "  Brand: $(getprop ro.product.brand)"
-ui_print "  Model: $(getprop ro.product.model)"
-ui_print "  Android: $(getprop ro.build.version.release)"
-ui_print "  Magisk: $MAGISK_VER ($MAGISK_VER_CODE)"
-
-BOOTPATH="/product/media"
-BACKUP_DIR="$MODPATH/backups"
-
-# Create backup folder if not found
-ui_print "*********************************************"
-ui_print "- Do you want to backup your current boot animation? (Only for first time installation)"
-ui_print "  Press the following keys to proceed:"
-ui_print "  Volume + to backup"
-ui_print "  Volume - to skip"
-ui_print "*********************************************"
-key_check
-if [ "$keycheck" == "KEY_VOLUMEUP" ]; then
-  if [ ! -d "$BACKUP_DIR" ]; then
-    mkdir -p "$BACKUP_DIR" && ui_print "- Created $BACKUP_DIR" || {
-      ui_print "! Unable to create backup directory at $BACKUP_DIR!"
-      abort
-    }
-  else
-    ui_print "- Using existing $BACKUP_DIR"
-  fi
-
+backup() {
   ui_print "- Backing up boot animations from $BOOTPATH"
   if [ -d "$BOOTPATH" ]; then
     for file in "$BOOTPATH"/bootanimation*; do
@@ -71,16 +38,84 @@ if [ "$keycheck" == "KEY_VOLUMEUP" ]; then
         cp -f "$file" "$BACKUP_DIR/" && {
           ui_print "- Cloned $(basename "$file")"
         } || {
-          ui_print "! Unable to clone $(basename "$file") to $BACKUP_DIR"
-          abort
+          ui_print "! Unable to clone $(basename "$file")"
+          abort "*********************************************"
         }
       fi
     done
   else
-    ui_print "! $BOOTPATH does not exist!"
-    abort
+    abort "! $BOOTPATH does not exist!"
+  fi
+}
+
+ui_print "*********************************************"
+ui_print "- mipad-custom-boot"
+ui_print "- By Veutexus (github.com/G0246)"
+ui_print "- Version: $MODULE_VER_CODE"
+ui_print "*********************************************"
+
+# Check root manager
+if [[ "$KSU" == "true" ]]; then
+  ui_print "- KernelSU userspace version: $KSU_VER_CODE"
+  ui_print "- KernelSU kernel space version: $KSU_KERNEL_VER_CODE"
+  if [ "$KSU_VER_CODE" -lt 11551 ]; then
+    ui_print "*********************************************"
+    ui_print "- Error: KernelSU v0.8.0+ required!"
+    abort "*********************************************"
+  fi
+elif [[ "$APATCH" == "true" ]]; then
+  ui_print "- APatch Version Code: $APATCH_VER_CODE"
+  ui_print "- APatch Version: $APATCH_VER"
+  ui_print "- KernelPatch userspace version: $KERNELPATCH_VERSION"
+  ui_print "- KernelPatch kernel space version: $KERNEL_VERSION"
+  if [ "$APATCH_VER_CODE" -lt 10568 ]; then
+    ui_print "*********************************************"
+    ui_print "- Error: APatch 10568+ required!"
+    abort "*********************************************"
   fi
 else
+  ui_print "- Magisk version: $MAGISK_VER ($MAGISK_VER_CODE)"
+  if [ "$MAGISK_VER_CODE" -lt 26000 ]; then
+    ui_print "*********************************************"
+    ui_print "! Error: Magisk v26.0+ required!"
+    abort "*********************************************"
+  fi
+fi
+
+# Check Android version
+if [[ "$API" -lt 30 ]]; then
+  ui_print "*********************************************"
+  ui_print "! Error: Android 11+ (API: 30+) required!"
+  abort "*********************************************"
+fi
+
+# Device infos
+ui_print "*********************************************"
+ui_print "- Device information:"
+ui_print "  Brand: $(getprop ro.product.brand)"
+ui_print "  Model: $(getprop ro.product.model)"
+ui_print "  Android: $(getprop ro.build.version.release)"
+ui_print "*********************************************"
+
+# Create backup if not found
+if [ ! -d "$MAGISK_PATH$MODULE_ID/backups" ]; then
+  ui_print "- Do you want to backup your current boot animation?"
+  ui_print "  Press the following keys to proceed:"
+  ui_print "  Volume [+]: Backup (RECOMMENDED)"
+  ui_print "  Volume [-]: Skip"
+  ui_print "*********************************************"
+  key_check
+  if [ "$keycheck" == "KEY_VOLUMEUP" ]; then
+    mkdir -p "$BACKUP_DIR" && ui_print "- Created $BACKUP_DIR" || {
+      ui_print "! Unable to create $BACKUP_DIR"
+      abort "*********************************************"
+    }
+    backup
+  else
+    ui_print "- Skipping backup process."
+  fi
+else
+  ui_print "- Found existing boot backups."
   ui_print "- Skipping backup process."
 fi
 
