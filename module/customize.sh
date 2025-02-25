@@ -1,28 +1,28 @@
-#!/system/bin/sh
 SKIPUNZIP=0
 api_level_arch_detect
 
 BOOT_DIR="/product/media"
 BACKUP_DIR="$MODPATH/backups"
-MODULES_DIR=/data/adb/modules/
+MODULES_DIR="/data/adb/modules/"
 MODULE_ID=$(grep_prop id "$MODPATH/module.prop")
 MODULE_VER_CODE=$(expr "$(grep_prop versionCode "$MODPATH/module.prop")" + 0)
 
 # Recovery not recommended
-if [ "$BOOTMODE" != true ]; then
+if [[ "$BOOTMODE" != true ]]; then
   ui_print "*********************************************"
   ui_print "! Installing from recovery is not supported, please install via the APP only!"
   abort "*********************************************"
 fi
 
 # Check Android version
-if [[ "$API" -lt 30 ]]; then
+if [ "$API" -lt 30 ]; then
   ui_print "*********************************************"
   ui_print "! Error: Android 11+ (API: 30+) required!"
   abort "*********************************************"
 fi
 
 key_check() {
+  local key_event key_status
   while true; do
     key_check=$(/system/bin/getevent -qlc 1)
     key_event=$(echo "$key_check" | awk '{ print $3 }' | grep 'KEY_')
@@ -95,7 +95,7 @@ else
     ui_print "  Volume [-]: Abort"
     ui_print "*********************************************"
     key_check
-    if [ "$keycheck" == "KEY_VOLUMEUP" ]; then   
+    if [[ "$keycheck" == "KEY_VOLUMEUP" ]]; then
       ui_print "- Proceeding with the installation."
     else
       ui_print "*********************************************"
@@ -121,7 +121,7 @@ if [ ! -d "$MODULES_DIR$MODULE_ID/backups" ]; then
   ui_print "  Volume [-]: Skip"
   ui_print "*********************************************"
   key_check
-  if [ "$keycheck" == "KEY_VOLUMEUP" ]; then
+  if [[ "$keycheck" == "KEY_VOLUMEUP" ]]; then
     mkdir -p "$BACKUP_DIR" && ui_print "- Created $BACKUP_DIR" || {
       ui_print "! Error: Unable to create $BACKUP_DIR"
       abort "*********************************************"
