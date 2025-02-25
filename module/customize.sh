@@ -60,7 +60,7 @@ backup() {
 }
 
 ui_print "*********************************************"
-ui_print "- MiPad Custom BootSwap"
+ui_print "- MiPad Custom Boot Animation"
 ui_print "- By Veutexus (github.com/G0246)"
 ui_print "- ID: $MODULE_ID"
 ui_print "- Version: $MODULE_VER_CODE"
