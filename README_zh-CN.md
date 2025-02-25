@@ -1,4 +1,4 @@
-# MiPad Custom BootSwap
+# 小米平板自定义开机切换
 [English](/README.md) | 简体中文
 
 ## 介绍
@@ -6,7 +6,7 @@
 
 ## 要求
 - Magisk v26.1+ / KernelSU v0.8.0+ / APatch 10568+
-- Android 11+ (API 30+)
+- 安卓 11+ (API 30+)
 > [!NOTE]
 > 此模块专为 Magisk 设计。不会为 KernelSU 和 APatch 提供支持，有可能会出现问题。
 
