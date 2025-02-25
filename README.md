@@ -19,3 +19,17 @@ A module that is exclusive made for tablet devices and modifies the boot animati
 
 ## Disclaimer
 **Flashing this module may cause your device to bootloop, a bootloop saver module is highly recommended. I am not responsible for any damages caused to your device or data by using this module. Use at your own risk.**
+
+## License
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <https://www.gnu.org/licenses/>.
