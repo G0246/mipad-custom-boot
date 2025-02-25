@@ -2,14 +2,15 @@
 SKIPUNZIP=0
 api_level_arch_detect
 
-BOOT_PATH="/product/media"
+BOOT_DIR="/product/media"
 BACKUP_DIR="$MODPATH/backups"
-MODULE_PATH=/data/adb/modules/
+MODULE_DIR=/data/adb/modules/
 MODULE_ID=$(grep_prop id "$MODPATH/module.prop")
 MODULE_VER_CODE=$(expr "$(grep_prop versionCode "$MODPATH/module.prop")" + 0)
 
 # Recovery not recommended
 if [ "$BOOTMODE" != true ]; then
+  ui_print "*********************************************"
   ui_print "! Installing from recovery is not supported, please install via the APP only!"
   abort "*********************************************"
 fi
@@ -42,9 +43,9 @@ key_check() {
 }
 
 backup() {
-  ui_print "- Backing up boot animations from $BOOT_PATH"
-  if [ -d "$BOOT_PATH" ]; then
-    for file in "$BOOT_PATH"/bootanimation*; do
+  ui_print "- Backing up boot animations from $BOOT_DIR"
+  if [ -d "$BOOT_DIR" ]; then
+    for file in "$BOOT_DIR"/bootanimation*; do
       if [ -f "$file" ]; then
         cp -f "$file" "$BACKUP_DIR/" && {
           ui_print "- Cloned $(basename "$file")"
@@ -54,11 +55,12 @@ backup() {
       fi
     done
   else
-    ui_print "! $BOOT_PATH does not exist!"
+    ui_print "! $BOOT_DIR does not exist!"
     abort "*********************************************"
   fi
 }
 
+# Start
 ui_print "*********************************************"
 ui_print "- mipad-custom-boot"
 ui_print "- By Veutexus (github.com/G0246)"
@@ -85,15 +87,16 @@ elif [[ "$APATCH" == "true" ]]; then
   fi
 else
   ui_print "- Magisk Version: $MAGISK_VER ($MAGISK_VER_CODE)"
-  if [ "$MAGISK_VER_CODE" -lt 26000 ]; then
-    ui_print "- Your current Magisk version is lower than the minimum requirement, do you still want to install?"
+  if [ "$MAGISK_VER_CODE" -lt 26100 ]; then
+    ui_print "*********************************************"
+    ui_print "- Your current version of Magisk does not meet the minimum requirements. Would you like to proceed with the installation anyway?"
     ui_print "  Press the following keys to proceed:"
     ui_print "  Volume [+]: Continue"
     ui_print "  Volume [-]: Abort"
     ui_print "*********************************************"
     key_check
     if [ "$keycheck" == "KEY_VOLUMEUP" ]; then   
-      ui_print "- Installation continue."
+      ui_print "- Proceeding with the installation."
     else
       ui_print "*********************************************"
       ui_print "- Installation aborted."
@@ -111,7 +114,7 @@ ui_print "  Android: $(getprop ro.build.version.release)"
 ui_print "*********************************************"
 
 # Create backup if not found
-if [ ! -d "$MODULE_PATH$MODULE_ID/backups" ]; then
+if [ ! -d "$MODULE_DIR$MODULE_ID/backups" ]; then
   ui_print "- Do you want to backup your current boot animation?"
   ui_print "  Press the following keys to proceed:"
   ui_print "  Volume [+]: Backup (RECOMMENDED)"
