@@ -1,4 +1,4 @@
-# MiPad Custom BootSwap
+# MiPad Custom Boot Animation
 English | [简体中文](/README_zh-CN.md)
 
 ## Introduction
