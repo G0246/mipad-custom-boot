@@ -1,4 +1,4 @@
-# mipad-custom-boot
+# MiPad Custom BootSwap
 English | [简体中文](/README_zh-CN.md)
 
 ## Introduction
