@@ -13,7 +13,7 @@ A module that is exclusive made for tablet devices and modifies the boot animati
 ## Installation
 1. Download the [latest](https://github.com/G0246/mipad-custom-boot/releases/latest) release
 2. Change the animation timing or design to your liking (Optional)
-3. Flash .zip module in the Magisk/KSU/APatch app
+3. Flash .zip module in the Magisk / KernelSU / APatch app
 > [!TIP]
 > If you see a blank screen after adding your own animation, that means you didn't compress it correctly, the ZIP should be uncompressed (store-only mode).
 

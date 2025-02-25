@@ -13,7 +13,7 @@
 ## 安装
 1. 下载[最新](https://github.com/G0246/mipad-custom-boot/releases/latest)版本
 2. 根据自己的喜好更改动画長短或设计（可选）
-3. Magisk/KSU/APatch 应用中刷入 .zip 模块
+3. Magisk / KernelSU / APatch 应用中刷入 .zip 模块
 > [!TIP]
 > 如果您在添加自己的动画主题后看到空白一片，则说明您没有正确压缩它，压缩档应没有进行压缩（仅存储模式）。
 
