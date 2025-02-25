@@ -2,7 +2,7 @@
 SKIPUNZIP=0
 api_level_arch_detect
 
-BOOTPATH="/product/media"
+BOOT_PATH="/product/media"
 BACKUP_DIR="$MODPATH/backups"
 MODULE_PATH=/data/adb/modules/
 MODULE_ID=$(grep_prop id "$MODPATH/module.prop")
@@ -29,9 +29,9 @@ key_check() {
 }
 
 backup() {
-  ui_print "- Backing up boot animations from $BOOTPATH"
-  if [ -d "$BOOTPATH" ]; then
-    for file in "$BOOTPATH"/bootanimation*; do
+  ui_print "- Backing up boot animations from $BOOT_PATH"
+  if [ -d "$BOOT_PATH" ]; then
+    for file in "$BOOT_PATH"/bootanimation*; do
       if [ -f "$file" ]; then
         cp -f "$file" "$BACKUP_DIR/" && {
           ui_print "- Cloned $(basename "$file")"
@@ -42,7 +42,7 @@ backup() {
       fi
     done
   else
-    ui_print "! $BOOTPATH does not exist!"
+    ui_print "! $BOOT_PATH does not exist!"
     abort "*********************************************"
   fi
 }
