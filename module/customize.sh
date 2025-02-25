@@ -75,10 +75,9 @@ if [[ "$KSU" == "true" ]]; then
     abort "*********************************************"
   fi
 elif [[ "$APATCH" == "true" ]]; then
-  ui_print "- APatch Version Code: $APATCH_VER_CODE"
-  ui_print "- APatch Version: $APATCH_VER"
-  ui_print "- KernelPatch Userspace Version: $KERNELPATCH_VERSION"
-  ui_print "- KernelPatch Kernel Space Version: $KERNEL_VERSION"
+  ui_print "- APatch Version: $APATCH_VER ($APATCH_VER_CODE)"
+  ui_print "- KernelPatch Version: $KERNELPATCH_VERSION"
+  ui_print "- KernelPatch Kernel Version: $KERNEL_VERSION"
   if [ "$APATCH_VER_CODE" -lt 10568 ]; then
     ui_print "*********************************************"
     ui_print "- Error: APatch 10568+ required!"
@@ -87,7 +86,7 @@ elif [[ "$APATCH" == "true" ]]; then
 else
   ui_print "- Magisk Version: $MAGISK_VER ($MAGISK_VER_CODE)"
   if [ "$MAGISK_VER_CODE" -lt 26000 ]; then
-    ui_print "- Your current Magisk version is lower than the minimum requirement, do you still want to install it?"
+    ui_print "- Your current Magisk version is lower than the minimum requirement, do you still want to install?"
     ui_print "  Press the following keys to proceed:"
     ui_print "  Volume [+]: Continue"
     ui_print "  Volume [-]: Abort"
