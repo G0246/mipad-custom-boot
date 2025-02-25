@@ -8,6 +8,19 @@ MODULE_PATH=/data/adb/modules/
 MODULE_ID=$(grep_prop id "$MODPATH/module.prop")
 MODULE_VER_CODE=$(expr "$(grep_prop versionCode "$MODPATH/module.prop")" + 0)
 
+# Recovery not recommended
+if [ "$BOOTMODE" != true ]; then
+  ui_print "! Installing from recovery is not supported, please install via the APP only!"
+  abort "*********************************************"
+fi
+
+# Check Android version
+if [[ "$API" -lt 30 ]]; then
+  ui_print "*********************************************"
+  ui_print "! Error: Android 11+ (API: 30+) required!"
+  abort "*********************************************"
+fi
+
 key_check() {
   while true; do
     key_check=$(/system/bin/getevent -qlc 1)
@@ -36,8 +49,7 @@ backup() {
         cp -f "$file" "$BACKUP_DIR/" && {
           ui_print "- Cloned $(basename "$file")"
         } || {
-          ui_print "! Error: Unable to clone $(basename "$file")"
-          abort "*********************************************"
+          ui_print "! Unable to clone $(basename "$file")"
         }
       fi
     done
@@ -75,17 +87,20 @@ elif [[ "$APATCH" == "true" ]]; then
 else
   ui_print "- Magisk Version: $MAGISK_VER ($MAGISK_VER_CODE)"
   if [ "$MAGISK_VER_CODE" -lt 26000 ]; then
+    ui_print "- Your current Magisk version is lower than the minimum requirement, do you still want to install it?"
+    ui_print "  Press the following keys to proceed:"
+    ui_print "  Volume [+]: Continue"
+    ui_print "  Volume [-]: Abort"
     ui_print "*********************************************"
-    ui_print "! Error: Magisk v26.0+ required!"
-    abort "*********************************************"
+    key_check
+    if [ "$keycheck" == "KEY_VOLUMEUP" ]; then   
+      ui_print "- Installation continue."
+    else
+      ui_print "*********************************************"
+      ui_print "- Installation aborted."
+      abort "*********************************************"
+    fi
   fi
-fi
-
-# Check Android version
-if [[ "$API" -lt 30 ]]; then
-  ui_print "*********************************************"
-  ui_print "! Error: Android 11+ (API: 30+) required!"
-  abort "*********************************************"
 fi
 
 # Device infos
