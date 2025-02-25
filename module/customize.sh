@@ -4,7 +4,7 @@ api_level_arch_detect
 
 BOOT_DIR="/product/media"
 BACKUP_DIR="$MODPATH/backups"
-MODULE_DIR=/data/adb/modules/
+MODULES_DIR=/data/adb/modules/
 MODULE_ID=$(grep_prop id "$MODPATH/module.prop")
 MODULE_VER_CODE=$(expr "$(grep_prop versionCode "$MODPATH/module.prop")" + 0)
 
@@ -114,7 +114,7 @@ ui_print "  Android: $(getprop ro.build.version.release)"
 ui_print "*********************************************"
 
 # Create backup if not found
-if [ ! -d "$MODULE_DIR$MODULE_ID/backups" ]; then
+if [ ! -d "$MODULES_DIR$MODULE_ID/backups" ]; then
   ui_print "- Do you want to backup your current boot animation?"
   ui_print "  Press the following keys to proceed:"
   ui_print "  Volume [+]: Backup (RECOMMENDED)"
