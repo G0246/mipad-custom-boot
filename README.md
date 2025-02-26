@@ -2,20 +2,22 @@
 English | [简体中文](/README_zh-CN.md)
 
 ## Introduction
-A module that is exclusive made for tablet devices and modifies the boot animation. Tablets differ slightly from other devices in that their animations vary depending on the orientation of the device. It has only been tested on the Xiaomi Pad 6 Pro (liuqin) V14.0.9.0.TMYCNXM at the moment, but it should work on other models as well.
+A module designed exclusively for tablet devices, replacing their boot animations with custom ones. Unlike phones, tablets often adapt their animations based on device orientation.
+> [!NOTE]  
+> Currently tested only on the Xiaomi Pad 6 Pro (liuqin) running V14.0.9.0.TMYCNXM. It should work on other tablet models, brands, and systems, but further testing is needed to confirm compatibility.
 
 ## Requirements
 - Magisk v26.1+ / KernelSU v0.8.0+ / APatch 10568+
 - Android 11+ (API 30+)
-> [!NOTE]
-> This module is designed for Magisk. KernelSU and APatch are not fully supported and may cause issues.
+> [!WARNING]
+> This module is designed for Magisk. KernelSU and APatch are not fully supported and unexpected bugs may occur.
 
 ## Installation
 1. Download the [latest](https://github.com/G0246/mipad-custom-boot/releases/latest) release
 2. Change the animation timing or design to your liking (Optional)
 3. Flash .zip module in the Magisk / KernelSU / APatch app
 > [!TIP]
-> If you see a blank screen after adding your own animation, that means you didn't compress it correctly, the ZIP should be uncompressed (store-only mode).
+> If you get a blank screen after adding your own animation, it’s likely because the ZIP file wasn’t compressed right. Use "store-only" mode (no compression) when creating the ZIP.
 
 ## Disclaimer
 **Flashing this module may cause your device to bootloop, a bootloop saver module is highly recommended. I am not responsible for any damages caused to your device or data by using this module. Use at your own risk.**
