@@ -4,8 +4,8 @@ SKIPUNZIP=0
 api_level_arch_detect
 
 BOOT_DIR="/product/media"
-BACKUP_DIR="$MODPATH/backups"
 MODULES_DIR="/data/adb/modules/"
+BACKUP_DIR="$MODULES_DIR/backups"
 MODULE_ID=$(grep_prop id "$MODPATH/module.prop")
 MODULE_VER_CODE=$(expr "$(grep_prop versionCode "$MODPATH/module.prop")" + 0)
 
