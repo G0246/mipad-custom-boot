@@ -2,7 +2,7 @@
 English | [简体中文](/README_zh-CN.md)
 
 ## Introduction
-A module designed exclusively for tablet devices, replacing their boot animations with custom ones. Unlike phones, tablets often adapt their animations based on device orientation.
+A module designed exclusively for tablet devices, replacing the boot animations with custom ones. Unlike phones, tablets often adapt their animations based on device orientation.
 > [!NOTE]  
 > Currently tested only on the Xiaomi Pad 6 Pro (liuqin) running V14.0.9.0.TMYCNXM. It should work on other tablet models, brands, and systems, but further testing is needed to confirm compatibility.
 
@@ -11,6 +11,9 @@ A module designed exclusively for tablet devices, replacing their boot animation
 - Android 11+ (API 30+)
 > [!WARNING]
 > This module is designed for Magisk. KernelSU and APatch are not fully supported and unexpected bugs may occur.
+
+## Themes
+- Original light version
 
 ## Installation
 1. Download the [latest](https://github.com/G0246/mipad-custom-boot/releases/latest) release
