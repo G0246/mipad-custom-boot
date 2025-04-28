@@ -22,7 +22,7 @@ A simple module designed exclusively for tablet devices, replacing the boot anim
 > [!TIP]
 > If you get a blank screen after adding your own animation, it’s likely because the ZIP file wasn’t compressed right. Use "store-only" mode (no compression) when creating the ZIP.
 
-## To-dos
+## To-Dos
 1. Add a script (Python) to automate the generation of different orientation animation ZIPs
 2. Auto detect and select path for corresponding models
 
