@@ -2,9 +2,9 @@
 English | [简体中文](/README_zh-CN.md)
 
 ## Introduction
-A simple module designed exclusively for tablet devices, replacing the boot animations with custom ones. Unlike phones, tablets often adapt their animations based on device orientation.
+A simple module designed exclusively for tablet devices, replacing the boot animations with custom ones. Unlike phones, tablets often adapt their animations based on device orientation. This repo also act as a storage to store different animation designs **(Update soon!)**.
 > [!NOTE]  
-> Currently tested only on the Xiaomi Pad 6 Pro (liuqin) running V14.0.9.0.TMYCNXM. It should basically work on every other tablet models, brands, and systems, but further testing is needed to confirm compatibility.
+> Currently tested only on the Xiaomi Pad 6 Pro (liuqin) running V14.0.9.0.TMYCNXM or OS2.0.203.0.VMYCNXM. It should basically work on every other tablet models, brands, and systems, but further testing is needed to confirm compatibility.
 
 ## Requirements
 - Magisk v26.1+ / KernelSU v0.8.0+ / APatch 10568+
@@ -17,13 +17,13 @@ A simple module designed exclusively for tablet devices, replacing the boot anim
 
 ## Installation
 1. Download the [latest](https://github.com/G0246/mipad-custom-boot/releases/latest) release
-2. Change the animation timing or design to your liking (Optional)
+2. Make sure to update the animation timing, design or resolution to your liking (Optional)
 3. Flash .zip module in the Magisk / KernelSU / APatch app
 > [!TIP]
 > If you get a blank screen after adding your own animation, it’s likely because the ZIP file wasn’t compressed right. Use "store-only" mode (no compression) when creating the ZIP.
 
 ## To-Dos
-1. Add a script (Python) to automate the generation of different orientation animation ZIPs
+1. Add a script (Python) to automate the generation of different orientation/resolution animation ZIPs
 2. Auto detect and select path for corresponding models
 
 ## Disclaimer
